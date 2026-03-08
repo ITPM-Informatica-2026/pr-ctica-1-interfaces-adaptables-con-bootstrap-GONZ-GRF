@@ -31,6 +31,45 @@
         .hero-header h1 {
             font-weight: 800;
             margin-bottom: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+
+        .hero-title {
+            font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+            line-height: 1.2;
+        }
+
+        .hero-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .btn-download-app {
+            background: var(--fresh-accent);
+            color: #3b2f05;
+            border: 0;
+            font-weight: 700;
+            border-radius: 999px;
+            padding: 0.65rem 1.1rem;
+            white-space: nowrap;
+            margin-left: auto;
+        }
+
+        .btn-download-app:hover {
+            background: #f4c74e;
+            color: #2e2304;
+        }
+
+        .title-icon {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
         }
 
         .promo-row {
@@ -133,6 +172,15 @@
                 text-align: center;
             }
 
+            .hero-top {
+                justify-content: center;
+            }
+
+            .title-icon {
+                width: 42px;
+                height: 42px;
+            }
+
             .category-pill {
                 min-height: 72px;
             }
@@ -142,7 +190,13 @@
 <body>
     <main class="container py-4 py-md-5">
         <header class="hero-header mb-4">
-            <h1 class="display-4">Bienvenido a FreshCart</h1>
+            <div class="hero-top">
+                <h1 class="hero-title mb-0">
+                    <img src="https://img.icons8.com/ios-filled/100/000000/shopping-basket-2.png" class="title-icon" alt="Icono de canasta negro">
+                    <span>Bienvenido a FreshCart</span>
+                </h1>
+                <a href="#" class="btn btn-download-app d-inline-block">Descarga la aplicacio FreshCart</a>
+            </div>
             <p class="lead mb-0 accent-text">Tu tienda ideal para comprar productos frescos, saludables y deliciosos desde casa.</p>
         </header>
 
