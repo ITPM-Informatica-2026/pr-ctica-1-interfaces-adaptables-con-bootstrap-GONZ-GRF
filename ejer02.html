@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FreshCart App</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+		:root {
+			--fresh-green: #2e9f4f;
+			--fresh-dark: #17422d;
+			--fresh-soft: #f0f8ec;
+			--fresh-line: #d6e8d3;
+		}
+
+		body {
+			margin: 0;
+			font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+			background: linear-gradient(to bottom left, #fff5fc 0%, #ffe6f7 55%, #ffd9f3 100%);
+			color: #243328;
+		}
+
+		.app-hero {
+			background: linear-gradient(to bottom left, #cd178d 0%, #e892cd 58%, #ffe9f8 100%);
+			color: #fff;
+			border-radius: 20px;
+			padding: 2.2rem 1.25rem;
+			box-shadow: 0 12px 24px rgba(138, 15, 95, 0.28);
+		}
+
+		.app-hero h1 {
+			font-size: 2rem;
+			font-weight: 800;
+			margin-bottom: 0.4rem;
+			line-height: 1.2;
+		}
+
+		.hero-subtitle {
+			margin: 0;
+			font-size: 1rem;
+			font-weight: 500;
+			color: #f7f2ff;
+		}
+
+		.hero-phone-wrap {
+			display: flex;
+			justify-content: center;
+		}
+
+		.phone-mockup {
+			width: 220px;
+			height: 420px;
+			background: #0f1512;
+			border-radius: 30px;
+			padding: 10px;
+			box-shadow: 0 14px 26px rgba(0, 0, 0, 0.28);
+			position: relative;
+		}
+
+		.phone-mockup::before {
+			content: "";
+			position: absolute;
+			top: 6px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 90px;
+			height: 12px;
+			border-radius: 0 0 10px 10px;
+			background: #1d2a23;
+			z-index: 2;
+		}
+
+		.phone-screen {
+			height: 100%;
+			width: 100%;
+			border-radius: 24px;
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
+			background: #dff0d9;
+		}
+
+		.phone-screen img {
+			width: 100%;
+			height: 33.33%;
+			object-fit: cover;
+		}
+
+		.intro-card {
+			margin-top: -24px;
+			border: 1px solid var(--fresh-line);
+			border-radius: 16px;
+			background: rgba(255, 255, 255, 0.95);
+			box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
+		}
+
+		.download-buttons {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.75rem;
+		}
+
+		.hero-download {
+			margin-top: 1.25rem;
+		}
+
+		.contact-options {
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+			gap: 0.85rem;
+			margin-bottom: 0.9rem;
+		}
+
+		.contact-options .form-check {
+			margin: 0;
+		}
+
+		.contact-options .form-check-label {
+			color: #f7f2ff;
+			font-weight: 600;
+		}
+
+		.contact-input-wrap {
+			display: flex;
+			align-items: center;
+			gap: 0.7rem;
+			margin-bottom: 1rem;
+		}
+
+		.contact-input {
+			flex: 1;
+			height: 44px;
+			border-radius: 999px;
+			border: 1px solid #cde4cf;
+			padding: 0 1rem;
+			background: #ffffff;
+			color: #1f3126;
+		}
+
+		.verify-btn {
+			height: 44px;
+			border: 0;
+			border-radius: 999px;
+			padding: 0 1rem;
+			font-weight: 700;
+			background: #101010;
+			color: #ffffff;
+			white-space: nowrap;
+		}
+
+		.verify-btn:hover {
+			background: #212121;
+			color: #ffffff;
+		}
+
+		.contact-input:focus {
+			outline: none;
+			border-color: #8dcf9a;
+			box-shadow: 0 0 0 0.2rem rgba(141, 207, 154, 0.25);
+		}
+
+		.hero-download h2 {
+			font-size: 1.4rem;
+			font-weight: 700;
+			margin-bottom: 0.45rem;
+		}
+
+		.hero-download p {
+			margin-bottom: 0.9rem;
+			color: #f7f2ff;
+		}
+
+		.store-btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.55rem;
+			min-width: 170px;
+			border-radius: 10px;
+			padding: 0.65rem 1rem;
+			font-weight: 700;
+			text-decoration: none;
+			transition: all 0.2s ease;
+		}
+
+		.store-btn-icon {
+			width: 20px;
+			height: 20px;
+			object-fit: contain;
+			flex-shrink: 0;
+		}
+
+		.store-btn-apple {
+			background: #101010;
+			color: #ffffff;
+		}
+
+		.store-btn-google {
+			background: var(--fresh-dark);
+			color: #ffffff;
+		}
+
+		.store-btn:hover {
+			color: #ffffff;
+			text-decoration: none;
+			transform: translateY(-2px);
+		}
+
+		.benefits-wrap {
+			display: flex;
+			flex-wrap: wrap;
+			margin-left: -0.5rem;
+			margin-right: -0.5rem;
+		}
+
+		.benefit-col {
+			padding: 0.5rem;
+			display: flex;
+		}
+
+		.benefit-card {
+			width: 100%;
+			border: 1px solid var(--fresh-line);
+			border-radius: 14px;
+			background: #ffffff;
+			box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			padding: 1.2rem;
+			min-height: 120px;
+			font-weight: 700;
+			color: var(--fresh-dark);
+		}
+
+		.benefit-content {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 0.45rem;
+			text-align: center;
+		}
+
+		.benefit-icon {
+			width: 28px;
+			height: 28px;
+			object-fit: contain;
+		}
+
+		.benefit-text {
+			display: inline-block;
+			font-weight: 700;
+		}
+
+		.benefit-desc {
+			font-size: 0.88rem;
+			color: #5e6d62;
+			font-weight: 500;
+			line-height: 1.35;
+			margin: 0;
+		}
+
+		@media (max-width: 575.98px) {
+			.app-hero {
+				border-radius: 0 0 16px 16px;
+				padding: 1.8rem 1rem;
+			}
+
+			.app-hero h1 {
+				font-size: 1.6rem;
+			}
+
+			.phone-mockup {
+				width: 180px;
+				height: 340px;
+				margin-bottom: 1rem;
+			}
+
+			.intro-card {
+				margin-top: 0.75rem;
+			}
+
+			.download-buttons {
+				flex-direction: column;
+			}
+
+			.hero-download h2 {
+				font-size: 1.2rem;
+			}
+
+			.contact-options {
+				justify-content: center;
+			}
+
+			.contact-input-wrap {
+				width: 100%;
+				flex-direction: column;
+			}
+
+			.verify-btn {
+				width: 100%;
+			}
+
+			.store-btn {
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<main class="container py-4 py-md-5">
+		<header class="app-hero">
+			<div class="row align-items-center">
+				<div class="col-12 col-md-5 mb-3 mb-md-0">
+					<div class="hero-phone-wrap">
+						<div class="phone-mockup">
+							<div class="phone-screen">
+								<img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80" alt="Frutas y verduras frescas en pantalla de celular">
+								<img src="https://images.unsplash.com/photo-1579113800032-c38bd7635818?auto=format&fit=crop&w=900&q=80" alt="Lista de compras y bolsa de supermercado">
+								<img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=900&q=80" alt="Entrega de compras y productos frescos">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-start text-center text-md-left">
+					<div>
+						<h1>Obtenga La Aplicacíon FreshCart</h1>
+						<p class="hero-subtitle">Compra rapido, aprovecha ofertas exclusivas y recibe todo en casa.</p>
+						<div class="hero-download">
+							<div class="contact-options" role="group" aria-label="Opciones de contacto">
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="contacto" id="contactoCorreo" checked>
+									<label class="form-check-label" for="contactoCorreo">Correo electronico</label>
+								</div>
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="contacto" id="contactoTelefono">
+									<label class="form-check-label" for="contactoTelefono">Telefono</label>
+								</div>
+							</div>
+							<div class="contact-input-wrap">
+								<input type="text" id="contactInput" class="contact-input" placeholder="Correo Electronico" aria-label="Dato de contacto">
+								<button type="button" class="verify-btn">Enviar codigo de verificacion</button>
+							</div>
+							<h2>Compre más rápido y fácil</h2>
+							<p>Descargue la aplicación para obtener acceso exclusivo a ofertas y promociones</p>
+							<div class="download-buttons">
+								<a href="#" class="store-btn store-btn-apple">
+									<img src="https://img.icons8.com/ios-filled/100/ffffff/mac-os.png" class="store-btn-icon" alt="Icono de App Store">
+									<span>Descargar en App Store</span>
+								</a>
+								<a href="#" class="store-btn store-btn-google">
+									<img src="https://img.icons8.com/fluency/96/google-play.png" class="store-btn-icon" alt="Icono de Google Play">
+									<span>Disponible en Google Play</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<section>
+			<h2 class="h4 font-weight-bold mb-3">Beneficios destacados</h2>
+			<div class="benefits-wrap">
+				<div class="benefit-col col-12 col-sm-6 col-lg-3">
+					<article class="benefit-card">
+						<div class="benefit-content">
+							<img class="benefit-icon" src="https://img.icons8.com/color/96/alarm-clock--v1.png" alt="Icono de reloj">
+							<span class="benefit-text">Comprar en 10 minutos ahora</span>
+							<p class="benefit-desc">Recibe tus productos frescos en tiempo record con entrega rapida.</p>
+						</div>
+					</article>
+				</div>
+				<div class="benefit-col col-12 col-sm-6 col-lg-3">
+					<article class="benefit-card">
+						<div class="benefit-content">
+							<img class="benefit-icon" src="https://img.icons8.com/color/96/gift--v1.png" alt="Icono de regalo">
+							<span class="benefit-text">Mejores precios y ofertas</span>
+							<p class="benefit-desc">Aprovecha descuentos exclusivos y promociones para ahorrar mas.</p>
+						</div>
+					</article>
+				</div>
+				<div class="benefit-col col-12 col-sm-6 col-lg-3">
+					<article class="benefit-card">
+						<div class="benefit-content">
+							<img class="benefit-icon" src="https://img.icons8.com/color/96/services.png" alt="Icono de funciones">
+							<span class="benefit-text">Amplia función</span>
+							<p class="benefit-desc">Explora herramientas utiles para buscar, comparar y pedir facilmente.</p>
+						</div>
+					</article>
+				</div>
+				<div class="benefit-col col-12 col-sm-6 col-lg-3">
+					<article class="benefit-card">
+						<div class="benefit-content">
+							<img class="benefit-icon" src="https://img.icons8.com/color/96/compass--v1.png" alt="Icono de descubrimiento">
+							<span class="benefit-text">Descubrimiento fácil</span>
+							<p class="benefit-desc">Encuentra nuevos productos y recomendaciones segun tu gusto.</p>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			var correoRadio = document.getElementById("contactoCorreo");
+			var telefonoRadio = document.getElementById("contactoTelefono");
+			var contactInput = document.getElementById("contactInput");
+
+			function updateContactPlaceholder() {
+				if (!contactInput) {
+					return;
+				}
+
+				contactInput.placeholder = telefonoRadio && telefonoRadio.checked
+					? "Numero de Telefono"
+					: "Correo Electronico";
+			}
+
+			if (correoRadio) {
+				correoRadio.addEventListener("change", updateContactPlaceholder);
+			}
+
+			if (telefonoRadio) {
+				telefonoRadio.addEventListener("change", updateContactPlaceholder);
+			}
+
+			updateContactPlaceholder();
+		});
+	</script>
+</body>
+</html>
+
